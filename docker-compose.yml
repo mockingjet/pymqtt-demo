@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: pymqtt-demo-mosquitto
+    restart: always
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./mosquitto/:/mosquitto
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: pymqtt-demo-app
+    restart: always
+    tty: true
+    volumes:
+      - ".:/app"
+    working_dir: /app
+    depends_on:
+      - mosquitto
+
+  nginx:
+    image: nginx
+    container_name: pymqtt-demo-nginx
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./nginx/pymqtt-demo.conf:/etc/nginx/conf.d/default.conf"
+    depends_on:
+      - app
+
+networks:
+  pymqtt-demo-default:
