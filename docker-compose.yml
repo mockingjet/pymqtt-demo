@@ -5,9 +5,6 @@ services:
     image: eclipse-mosquitto:2
     container_name: pymqtt-demo-mosquitto
     restart: always
-    ports:
-      - 1883:1883
-      - 9001:9001
     volumes:
       - ./mosquitto/:/mosquitto
 
