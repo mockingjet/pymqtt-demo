@@ -9,6 +9,8 @@ packages = []
 [tool.poetry.dependencies]
 python = "^3.9"
 paho-mqtt = "^1.6.1"
+fastapi = "^0.88.0"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
 
 
 [build-system]

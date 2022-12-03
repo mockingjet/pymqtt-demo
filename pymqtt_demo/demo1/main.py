@@ -38,7 +38,8 @@ class MQTTManager:
 
 if __name__ == '__main__':
     manager =  MQTTManager("jetsai", "qwe123")
-    manager.add_topic('demo')
+    topic = 'demo1'
+    manager.add_topic(topic)
     
     for i in range(3):
         manager.create_client('sub'+str(i))
@@ -46,4 +47,4 @@ if __name__ == '__main__':
     pub = manager.create_client('pub')
     while True:
         time.sleep(5)
-        pub.publish('demo', 'test')
+        pub.publish(topic, 'test')

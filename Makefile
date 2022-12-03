@@ -10,5 +10,11 @@ build:
 logs:
 	docker-compose -f docker-compose.yml logs
 
+bash:
+	docker exec -it pymqtt-demo-app bash
+
 demo1:
-	docker exec -it pymqtt-demo-app poetry run python pymqtt_demo/demo1/main.py 
+	docker exec -it pymqtt-demo-app python pymqtt_demo/demo1/main.py 
+
+demo2:
+	docker exec -it pymqtt-demo-app uvicorn pymqtt_demo.demo2.main:app --reload --host 0.0.0.0
