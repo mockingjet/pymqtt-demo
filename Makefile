@@ -18,3 +18,6 @@ demo1:
 
 demo2:
 	docker exec -it pymqtt-demo-app uvicorn pymqtt_demo.demo2.main:app --reload --host 0.0.0.0
+
+demo3:
+	docker exec -it pymqtt-demo-app uvicorn pymqtt_demo.demo3.main:app --reload --host 0.0.0.0

@@ -1,5 +1,7 @@
 FROM python:3.9
 
+ENV PYTHONDONTWRITEBYTECODE 1
+
 RUN apt-get update \
     && apt-get -y upgrade \
     && pip install --upgrade pip \
